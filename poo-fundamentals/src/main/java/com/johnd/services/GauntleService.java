@@ -4,4 +4,6 @@ public interface GauntleService{
 
     void useGauntle(String stoneName);
 
+    void useFullPower();
+
 }

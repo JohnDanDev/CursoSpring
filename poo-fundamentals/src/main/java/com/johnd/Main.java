@@ -1,31 +1,57 @@
 package com.johnd;
 
-import com.johnd.factories.MindStoneFactory;
-import com.johnd.factories.PowerStoneFactory;
-import com.johnd.factories.RealityStoneFactory;
-import com.johnd.factories.TimeStoneFactory;
+import com.johnd.factories.*;
+import com.johnd.models.*;
+import com.johnd.services.GauntleServiceImpl;
+
+import java.util.Map;
 
 
 public class Main {
     public static void main(String[] args) {
 
-       System.setProperty("scope", "property");
+       System.setProperty("scope", "singleton");
 
-       final var timeStoneFactory = new TimeStoneFactory();
-       var timeStone = timeStoneFactory.createStone();
+       var realityFactory = new RealityStoneFactory();
+       var timeFactory = new TimeStoneFactory();
+       var soulFactory = new SoulStoneFactory();
+       var powerFactory = new PowerStoneFactory();
+       var spaceFactory = new SpaceStoneFactory();
+       var mindFactory = new MindStoneFactory();
 
-       final var powerStoneFactory = new PowerStoneFactory();
-       var powerStone = powerStoneFactory.createStone();
+        RealityStone reality = (RealityStone) realityFactory.createStone();
+        TimeStone time = (TimeStone) timeFactory.createStone();
+        SoulStone soul = (SoulStone) soulFactory.createStone();
+        PowerStone power = (PowerStone) powerFactory.createStone();
+        SpaceStone space = (SpaceStone) spaceFactory.createStone();
+        MindStone mind = (MindStone) mindFactory.createStone();
 
-       final var realityStoneFactory = new RealityStoneFactory();
-       var realityStone = realityStoneFactory.createStone();
+       //final var gauntletService = new GauntleServiceImpl();
 
-       final var mindStoneFactory = new MindStoneFactory();
-       var mindStone = mindStoneFactory.createStone();
+       Map<String, Stone>instances = Map.of(
+               "reality", reality,
+               "soul", soul,
+               "mind", mind,
+               "power", power,
+               "space", space,
+               "time", time
+               );
 
-        System.out.println(timeStone);
-        System.out.println(powerStone);
-        System.out.println(realityStone);
-        System.out.println(mindStone);
+       //gauntletService.setStones(instances);
+
+       final var gauntletService = new GauntleServiceImpl(  //Constructor
+                reality,
+                soul,
+                mind,
+                power,
+                space,
+                time
+        );
+
+
+
+        gauntletService.useGauntle("reality");
+
+        gauntletService.useFullPower();
     }
 }
