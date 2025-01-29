@@ -1,4 +1,4 @@
-package com.johnd.prototypes;
+package com.johnd.services.prototypes;
 
 import com.johnd.models.Stone;
 

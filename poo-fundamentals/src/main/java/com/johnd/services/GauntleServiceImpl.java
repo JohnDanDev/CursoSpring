@@ -3,6 +3,7 @@ package com.johnd.services;
 import com.johnd.models.*;
 import com.johnd.singletons.MindStoneSingleton;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -14,6 +15,7 @@ import java.util.Map;
 @Log
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class GauntleServiceImpl implements GauntleService {
 
 

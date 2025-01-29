@@ -1,7 +1,9 @@
 package com.johnd;
 
+import com.johnd.configs.StoneContext;
 import com.johnd.factories.*;
 import com.johnd.models.*;
+import com.johnd.services.GauntleService;
 import com.johnd.services.GauntleServiceImpl;
 
 import java.util.Map;
@@ -10,48 +12,24 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
 
-       System.setProperty("scope", "singleton");
-
-       var realityFactory = new RealityStoneFactory();
-       var timeFactory = new TimeStoneFactory();
-       var soulFactory = new SoulStoneFactory();
-       var powerFactory = new PowerStoneFactory();
-       var spaceFactory = new SpaceStoneFactory();
-       var mindFactory = new MindStoneFactory();
-
-        RealityStone reality = (RealityStone) realityFactory.createStone();
-        TimeStone time = (TimeStone) timeFactory.createStone();
-        SoulStone soul = (SoulStone) soulFactory.createStone();
-        PowerStone power = (PowerStone) powerFactory.createStone();
-        SpaceStone space = (SpaceStone) spaceFactory.createStone();
-        MindStone mind = (MindStone) mindFactory.createStone();
-
-       //final var gauntletService = new GauntleServiceImpl();
-
-       Map<String, Stone>instances = Map.of(
-               "reality", reality,
-               "soul", soul,
-               "mind", mind,
-               "power", power,
-               "space", space,
-               "time", time
-               );
-
-       //gauntletService.setStones(instances);
-
-       final var gauntletService = new GauntleServiceImpl(  //Constructor
+       /*final var gauntletService = new GauntleServiceImpl(  //Constructor
                 reality,
                 soul,
                 mind,
                 power,
                 space,
                 time
+        );*/
+
+        final var gauntletService = StoneContext.setContext(
+                pre -> System.out.println("Do something 1"),
+                post -> System.out.println("Do something 2")
         );
 
-
-
-        gauntletService.useGauntle("reality");
+        gauntletService.useGauntle("power");
 
         gauntletService.useFullPower();
+
+        StoneContext.destroyContext(gauntletService);
     }
 }

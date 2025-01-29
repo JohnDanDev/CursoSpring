@@ -2,7 +2,7 @@ package com.johnd.factories;
 
 import com.johnd.models.RealityStone;
 import com.johnd.models.Stone;
-import com.johnd.prototypes.Prototypes;
+import com.johnd.services.prototypes.Prototypes;
 import com.johnd.singletons.RealityStoneSingleton;
 
 public class RealityStoneFactory extends ConfigurableStoneFactory{

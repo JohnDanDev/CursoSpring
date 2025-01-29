@@ -2,7 +2,7 @@ package com.johnd.factories;
 
 import com.johnd.models.PowerStone;
 import com.johnd.models.Stone;
-import com.johnd.prototypes.Prototypes;
+import com.johnd.services.prototypes.Prototypes;
 import com.johnd.singletons.PowerStoneSingleton;
 
 public class PowerStoneFactory extends ConfigurableStoneFactory{
